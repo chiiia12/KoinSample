@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,9 +30,19 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
 }
 
-class MainRepository() {
+class MainRepository(private val apiService: ApiService) {
     fun getMainModel() {
         Log.d(MainRepository::class.java.simpleName, "getMainModel()")
+        apiService.getData().enqueue(object : Callback<Any> {
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.d(MainRepository::class.java.simpleName, "onFailure $t")
+            }
+
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                Log.d(MainRepository::class.java.simpleName, "onResponse")
+            }
+
+        })
     }
 }
 
