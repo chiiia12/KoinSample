@@ -36,6 +36,14 @@ dependencies {
     implementation "org.koin:koin-core:2.1.0"
     // Testing
     testImplementation "org.koin:koin-test:2.1.0"
+    // Koin for Android
+    implementation 'org.koin:koin-android:2.1.0'
+    // or Koin for Lifecycle scoping
+    implementation 'org.koin:koin-androidx-scope:2.1.0'
+    // or Koin for Android Architecture ViewModel
+    implementation 'org.koin:koin-androidx-viewmodel:2.1.0'
+    // or Koin for Android Fragment Factory (unstable version)
+    compile 'org.koin:koin-androidx-fragment:2.1.0'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha3"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-alpha02"
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0-alpha02"
